@@ -1,0 +1,50 @@
+# Tic-Tac-Toe System Design
+
+## Architecture
+- Pattern: MVVM
+- Technologies: SwiftUI + Combine
+- Flow: View ⇄ ViewModel ⇄ Model
+
+## Components
+
+### Models
+- `Player`: enum (X, O)
+- `GameStatus`: enum (inProgress, draw, win(Player))
+- `Board`: 3x3 matrix of `Player?` values
+
+### ViewModel
+- Handles:
+  - Game state & move validation
+  - Win/draw detection
+  - Turn switching
+  - AI opponent logic
+- Exposes:
+  - `@Published var board: [[Player?]]`
+  - `@Published var status: GameStatus`
+
+### Views
+- Grid-based game board
+- Cell view with animations
+- Dynamic status display
+- Reset button
+
+## Game Flow
+1. Player taps a cell
+2. ViewModel validates and updates the board
+3. Checks for win or draw
+4. Switches player / triggers AI
+5. Repeat until game ends
+
+## AI Strategy (Rule-Based)
+1. Try to win if possible
+2. Block opponent from winning
+3. Take center cell
+4. Take any corner
+5. Take any remaining cell
+
+## Key Features
+- Live UI updates with `@Published`
+- Turn-based logic with validation
+- Basic AI opponent
+- Animated UI feedback
+- Solo or two-player mode support (extensible)
